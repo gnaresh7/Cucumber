@@ -1,0 +1,11 @@
+
+Feature: Faebook Login
+
+ Scenario: Checking the Facebook Tittle
+ 
+ Given I Launch Chrome Browser
+ When I open Face book page
+ Then I verify that tittle present are not
+ And Close the browser
+ 
+ 

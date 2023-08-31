@@ -1,0 +1,65 @@
+package stepDefinitions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.cucumber.java.en.*;
+
+public class Steps {
+	
+	WebDriver driver;
+	
+	@Given("User launch Chrome Browser")
+	public void user_launch_chrome_browser() {
+		driver=new ChromeDriver();
+		
+	}
+	
+	@When("User opens the URL")
+	public void user_opens_the_url() {
+	   driver.get("https://admin-demo.nopcommerce.com/login");
+	}
+
+	@When("User enter Email and Password")
+	public void user_enter_email_and_password() {
+		
+		driver.findElement(By.xpath("//input[@type='email']")).sendKeys("admin@yourstore.com");
+		
+		driver.findElement(By.xpath("//input[@value='admin']")).sendKeys("admin");	
+			
+	   
+	}
+
+	@When("click on Login")
+	public void click_on_login() {
+		driver.findElement(By.xpath("//button[@type='submit']")).click();	   
+	}
+
+	@Then("Verify the page Tittle")
+	public void verify_the_page_tittle() {
+		
+		String tittle=driver.getTitle();
+		System.out.println(tittle);
+	  
+	}
+
+	@When("User click on Logout Link")
+	public void user_click_on_logout_link() {
+		
+		driver.findElement(By.xpath("(//ul[@class='navbar-nav ml-auto pl-2']//a)[2]")).click();
+	    
+	}
+
+	
+	@Then("close browser")
+	public void close_browser() {
+		
+		driver.quit();
+	    
+	}
+
+	
+	
+
+}
